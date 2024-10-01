@@ -6,6 +6,8 @@ func trySaveImage(image: Image) -> void:
 	
 	var time = str(Time.get_unix_time_from_system()).replace(".", "-")
 	
+	print("Trying to save image...")
+	
 	match OS.get_name():
 		"Web":
 			var buffer = imageCopy.save_png_to_buffer()

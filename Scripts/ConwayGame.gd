@@ -20,7 +20,6 @@ var gameBoard: BitMap
 
 func requestNextStep() -> void:
 	gameBoard = nextRound(gameBoard, SURROUNDINGS_MASK)
-	print_debug("emitting next step of game")
 	boardDone.emit(gameBoard)
 
 func requestCurrentMap() -> void:
