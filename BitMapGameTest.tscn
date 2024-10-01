@@ -1,0 +1,563 @@
+[gd_scene load_steps=10 format=3 uid="uid://2c3mxa6ig7by"]
+
+[ext_resource type="Script" path="res://Scripts/ConwayGame.gd" id="1_3kpby"]
+[ext_resource type="Script" path="res://Scripts/ShowMapImage.gd" id="1_v4kdx"]
+[ext_resource type="Script" path="res://Scripts/StepControl.gd" id="3_0chq1"]
+
+[sub_resource type="Image" id="Image_230w0"]
+data = {
+"data": PackedByteArray(0, 255, 0, 0, 0, 0, 255, 0, 255, 255, 0, 255, 0, 255, 255, 255, 0, 255, 0, 0, 0, 0, 0, 0, 255, 0, 255, 255, 0, 0, 255, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 255, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 0, 255, 255, 255, 0, 255, 0, 255, 0, 0, 0, 0, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 0, 255, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 255, 255, 255, 0, 255, 0, 0, 0, 0, 255, 0, 255, 255, 255, 255, 255, 0, 255, 255, 0, 255, 255, 255, 0, 255, 0, 255, 0, 0, 255, 255, 0, 255, 0, 0, 255, 0, 0, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 0, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 255, 0, 255, 255, 0, 255, 255, 0, 0, 255, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 0, 255, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 0, 0, 255, 0, 255, 255, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 255, 0, 0, 255, 0, 0, 0, 0, 255, 0, 0, 0, 255, 255, 0, 0, 255, 0, 0, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 255, 0, 0, 255, 0, 255, 0, 255, 0, 0, 0, 0, 0, 0, 255, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 255, 255, 255, 0, 0, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 255, 0, 0, 0, 255, 0, 0, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 255, 0, 255, 0, 255, 0, 0, 255, 0, 0, 0, 255, 255, 0, 255, 0, 0),
+"format": "Lum8",
+"height": 20,
+"mipmaps": false,
+"width": 20
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_rsyow"]
+image = SubResource("Image_230w0")
+
+[sub_resource type="Image" id="Image_kf2im"]
+data = {
+"data": PackedByteArray(255, 255, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 255, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 0, 0, 255, 0, 255, 0, 255, 0, 0, 255, 0, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 0, 0, 255, 0, 0, 0, 0, 255, 0, 0, 255, 0, 0, 0, 255, 0, 0, 255, 0, 255, 255, 0, 0, 255, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 255, 0, 0, 255, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 0, 255, 0, 0, 0, 0, 255, 0, 255, 0, 0, 255, 255, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 255, 0, 0, 255, 0, 255, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 0, 255, 255, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 255, 255, 255, 0, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 0, 255, 0, 0, 255, 0, 0, 0, 0, 255, 0, 0, 0, 0, 255, 0, 0, 0, 0, 255, 0, 0, 255, 0, 0, 255, 255, 0, 0, 255, 0, 255, 0, 0, 0, 0, 0, 255, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 255, 0, 0, 0, 0, 255, 255, 0, 255, 0, 255, 0, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 255, 0, 255, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 255, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 255, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 255, 255, 0, 255, 0, 0, 0, 0, 255, 255, 255, 0),
+"format": "Lum8",
+"height": 20,
+"mipmaps": false,
+"width": 20
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_0s8bp"]
+image = SubResource("Image_kf2im")
+
+[sub_resource type="Image" id="Image_u6wxg"]
+data = {
+"data": PackedByteArray(0, 255, 0, 0, 255, 0, 255, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 255, 0, 255, 0, 0, 0, 255, 0, 255, 0, 0, 0, 0, 255, 0, 255, 255, 255, 0, 0, 255, 0, 0, 0, 0, 0, 255, 0, 255, 255, 0, 0, 255, 0, 255, 0, 0, 0, 0, 255, 0, 255, 255, 255, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 255, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 0, 0, 255, 0, 255, 0, 255, 0, 255, 0, 0, 0, 255, 0, 255, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 255, 255, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 255, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 255, 0, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 255, 0, 255, 0, 0, 255, 255, 0, 0, 255, 0, 255, 0, 0, 0, 0, 0, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 255, 0, 255, 255, 255, 0, 0, 255, 0, 0, 255, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 255, 255, 0, 0, 255, 0, 0, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 0, 255, 0, 0, 255, 0, 0, 255, 0, 255, 0, 255, 255, 0, 255, 0, 0, 0, 0, 0, 0, 255, 0, 0, 255, 255, 255, 0, 0, 0, 255, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"format": "Lum8",
+"height": 20,
+"mipmaps": false,
+"width": 20
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_t3ntr"]
+image = SubResource("Image_u6wxg")
+
+[node name="Game" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VerticalContainer" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 5
+
+[node name="HorizontalContainer" type="HBoxContainer" parent="VerticalContainer"]
+layout_mode = 2
+
+[node name="Cell" type="ColorRect" parent="VerticalContainer/HorizontalContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="VerticalContainer/HorizontalContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="VerticalContainer/HorizontalContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect4" type="ColorRect" parent="VerticalContainer/HorizontalContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect5" type="ColorRect" parent="VerticalContainer/HorizontalContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect6" type="ColorRect" parent="VerticalContainer/HorizontalContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect7" type="ColorRect" parent="VerticalContainer/HorizontalContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect8" type="ColorRect" parent="VerticalContainer/HorizontalContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect9" type="ColorRect" parent="VerticalContainer/HorizontalContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect10" type="ColorRect" parent="VerticalContainer/HorizontalContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="HBox2" type="HBoxContainer" parent="VerticalContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VerticalContainer/HBox2"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="VerticalContainer/HBox2"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="VerticalContainer/HBox2"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect4" type="ColorRect" parent="VerticalContainer/HBox2"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect5" type="ColorRect" parent="VerticalContainer/HBox2"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect6" type="ColorRect" parent="VerticalContainer/HBox2"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect7" type="ColorRect" parent="VerticalContainer/HBox2"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect8" type="ColorRect" parent="VerticalContainer/HBox2"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect9" type="ColorRect" parent="VerticalContainer/HBox2"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect10" type="ColorRect" parent="VerticalContainer/HBox2"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="HBox3" type="HBoxContainer" parent="VerticalContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VerticalContainer/HBox3"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="VerticalContainer/HBox3"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="VerticalContainer/HBox3"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect4" type="ColorRect" parent="VerticalContainer/HBox3"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect5" type="ColorRect" parent="VerticalContainer/HBox3"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect6" type="ColorRect" parent="VerticalContainer/HBox3"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect7" type="ColorRect" parent="VerticalContainer/HBox3"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect8" type="ColorRect" parent="VerticalContainer/HBox3"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect9" type="ColorRect" parent="VerticalContainer/HBox3"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect10" type="ColorRect" parent="VerticalContainer/HBox3"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="HBox4" type="HBoxContainer" parent="VerticalContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VerticalContainer/HBox4"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="VerticalContainer/HBox4"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="VerticalContainer/HBox4"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect4" type="ColorRect" parent="VerticalContainer/HBox4"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect5" type="ColorRect" parent="VerticalContainer/HBox4"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect6" type="ColorRect" parent="VerticalContainer/HBox4"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect7" type="ColorRect" parent="VerticalContainer/HBox4"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect8" type="ColorRect" parent="VerticalContainer/HBox4"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect9" type="ColorRect" parent="VerticalContainer/HBox4"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect10" type="ColorRect" parent="VerticalContainer/HBox4"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="HBox5" type="HBoxContainer" parent="VerticalContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VerticalContainer/HBox5"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="VerticalContainer/HBox5"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="VerticalContainer/HBox5"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect4" type="ColorRect" parent="VerticalContainer/HBox5"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect5" type="ColorRect" parent="VerticalContainer/HBox5"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect6" type="ColorRect" parent="VerticalContainer/HBox5"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect7" type="ColorRect" parent="VerticalContainer/HBox5"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect8" type="ColorRect" parent="VerticalContainer/HBox5"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect9" type="ColorRect" parent="VerticalContainer/HBox5"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect10" type="ColorRect" parent="VerticalContainer/HBox5"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="HBox6" type="HBoxContainer" parent="VerticalContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VerticalContainer/HBox6"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="VerticalContainer/HBox6"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="VerticalContainer/HBox6"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect4" type="ColorRect" parent="VerticalContainer/HBox6"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect5" type="ColorRect" parent="VerticalContainer/HBox6"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect6" type="ColorRect" parent="VerticalContainer/HBox6"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect7" type="ColorRect" parent="VerticalContainer/HBox6"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect8" type="ColorRect" parent="VerticalContainer/HBox6"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect9" type="ColorRect" parent="VerticalContainer/HBox6"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect10" type="ColorRect" parent="VerticalContainer/HBox6"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="HBox7" type="HBoxContainer" parent="VerticalContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VerticalContainer/HBox7"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="VerticalContainer/HBox7"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="VerticalContainer/HBox7"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect4" type="ColorRect" parent="VerticalContainer/HBox7"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect5" type="ColorRect" parent="VerticalContainer/HBox7"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect6" type="ColorRect" parent="VerticalContainer/HBox7"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect7" type="ColorRect" parent="VerticalContainer/HBox7"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect8" type="ColorRect" parent="VerticalContainer/HBox7"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect9" type="ColorRect" parent="VerticalContainer/HBox7"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect10" type="ColorRect" parent="VerticalContainer/HBox7"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="HBox8" type="HBoxContainer" parent="VerticalContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VerticalContainer/HBox8"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="VerticalContainer/HBox8"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="VerticalContainer/HBox8"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect4" type="ColorRect" parent="VerticalContainer/HBox8"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect5" type="ColorRect" parent="VerticalContainer/HBox8"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect6" type="ColorRect" parent="VerticalContainer/HBox8"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect7" type="ColorRect" parent="VerticalContainer/HBox8"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect8" type="ColorRect" parent="VerticalContainer/HBox8"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect9" type="ColorRect" parent="VerticalContainer/HBox8"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect10" type="ColorRect" parent="VerticalContainer/HBox8"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="HBox9" type="HBoxContainer" parent="VerticalContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VerticalContainer/HBox9"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="VerticalContainer/HBox9"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="VerticalContainer/HBox9"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect4" type="ColorRect" parent="VerticalContainer/HBox9"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect5" type="ColorRect" parent="VerticalContainer/HBox9"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect6" type="ColorRect" parent="VerticalContainer/HBox9"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect7" type="ColorRect" parent="VerticalContainer/HBox9"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect8" type="ColorRect" parent="VerticalContainer/HBox9"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect9" type="ColorRect" parent="VerticalContainer/HBox9"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect10" type="ColorRect" parent="VerticalContainer/HBox9"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="HBox10" type="HBoxContainer" parent="VerticalContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VerticalContainer/HBox10"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="VerticalContainer/HBox10"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="VerticalContainer/HBox10"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect4" type="ColorRect" parent="VerticalContainer/HBox10"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect5" type="ColorRect" parent="VerticalContainer/HBox10"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect6" type="ColorRect" parent="VerticalContainer/HBox10"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect7" type="ColorRect" parent="VerticalContainer/HBox10"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect8" type="ColorRect" parent="VerticalContainer/HBox10"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect9" type="ColorRect" parent="VerticalContainer/HBox10"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="ColorRect10" type="ColorRect" parent="VerticalContainer/HBox10"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="GameSpace1" type="CenterContainer" parent="."]
+modulate = Color(1, 0.223529, 1, 0.427451)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v4kdx")
+
+[node name="ConwayGame" type="Node" parent="GameSpace1"]
+script = ExtResource("1_3kpby")
+gridSize = 20
+seed = "Chef Boyardee"
+
+[node name="TextureRect" type="TextureRect" parent="GameSpace1"]
+layout_mode = 2
+texture = SubResource("ImageTexture_rsyow")
+stretch_mode = 1
+
+[node name="StepControl" type="Node" parent="GameSpace1"]
+script = ExtResource("3_0chq1")
+
+[node name="GameSpace2" type="CenterContainer" parent="."]
+modulate = Color(0, 0.960784, 0.960784, 0.384314)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v4kdx")
+
+[node name="ConwayGame" type="Node" parent="GameSpace2"]
+script = ExtResource("1_3kpby")
+gridSize = 20
+seed = "Boysonberry"
+
+[node name="TextureRect" type="TextureRect" parent="GameSpace2"]
+layout_mode = 2
+texture = SubResource("ImageTexture_0s8bp")
+stretch_mode = 1
+
+[node name="StepControl" type="Node" parent="GameSpace2"]
+script = ExtResource("3_0chq1")
+
+[node name="GameSpace3" type="CenterContainer" parent="."]
+modulate = Color(0.788235, 0.839216, 0.356863, 0.384314)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v4kdx")
+
+[node name="ConwayGame" type="Node" parent="GameSpace3"]
+script = ExtResource("1_3kpby")
+gridSize = 20
+seed = "Trails"
+
+[node name="TextureRect" type="TextureRect" parent="GameSpace3"]
+layout_mode = 2
+texture = SubResource("ImageTexture_t3ntr")
+stretch_mode = 1
+
+[node name="StepControl" type="Node" parent="GameSpace3"]
+script = ExtResource("3_0chq1")
+
+[connection signal="boardDone" from="GameSpace1/ConwayGame" to="GameSpace1" method="_on_conway_game_board_done"]
+[connection signal="request_next_step" from="GameSpace1/StepControl" to="GameSpace1" method="_on_step_control_request_next_step"]
+[connection signal="boardDone" from="GameSpace2/ConwayGame" to="GameSpace2" method="_on_conway_game_board_done"]
+[connection signal="request_next_step" from="GameSpace2/StepControl" to="GameSpace2" method="_on_step_control_request_next_step"]
+[connection signal="boardDone" from="GameSpace3/ConwayGame" to="GameSpace3" method="_on_conway_game_board_done"]
+[connection signal="request_next_step" from="GameSpace3/StepControl" to="GameSpace3" method="_on_step_control_request_next_step"]
