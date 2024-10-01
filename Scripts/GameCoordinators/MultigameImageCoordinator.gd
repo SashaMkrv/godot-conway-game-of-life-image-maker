@@ -47,6 +47,12 @@ var tiled: bool = false:
 		tiled = value
 		updatedTiled()
 
+@export
+var showGhost: bool = true:
+	set(value):
+		showGhost = value
+		updatedShowGhost()
+
 
 var _gameControllers : Array[ConwayGame] = []
 var pendingGameBoards: Array[BitMap] = []
@@ -57,6 +63,7 @@ var waitingToRender := false
 var _imageTexture:= ImageTexture.new()
 var _ghostTexture:= ImageTexture.new()
 var _currentImage: Image
+var _previousImage: Image
 var _paletteRng:= RandomNumberGenerator.new()
 
 func updatedPalette() -> void:
@@ -84,6 +91,9 @@ func updatedNumberOfGames() -> void:
 	updateRng()
 	initializeGames()
 
+func updatedShowGhost() -> void:
+	ghostNode.visible = showGhost
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	imageNode.texture = _imageTexture
@@ -101,6 +111,7 @@ func updateUiFields() -> void:
 	settingsUi.updateSeed(gameSeed)
 	settingsUi.updateGridSize(gridSize)
 	settingsUi.updateNumberOfGames(numberOfGames)
+	settingsUi.updateShowGhost(showGhost)
 
 func updateRng() -> void:
 	_paletteRng.seed = hash(gameSeed)
@@ -157,6 +168,8 @@ func _process(_delta: float) -> void:
 		
 		_imageTexture.set_image(image)
 		_imageTexture.set_size_override(Vector2i(500, 500))
+		
+		_previousImage = _currentImage
 		
 		_currentImage = image
 		
@@ -218,3 +231,7 @@ func _on_settings_ui_number_of_games_changed(newNumber: int) -> void:
 
 func _on_settings_ui_seed_changed(newSeed: String) -> void:
 	gameSeed = newSeed
+
+
+func _on_settings_ui_show_ghost_changed(newState: bool) -> void:
+	showGhost = newState

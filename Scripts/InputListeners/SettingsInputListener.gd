@@ -8,11 +8,14 @@ var seedInput: LineEdit = %SeedInput
 var gridSizeInput: SpinBox = %GridSizeInput
 @onready
 var numberOfGamesInput: SpinBox = %NumberOfGamesInput
+@onready
+var showGhostInput: CheckBox = %ShowGhostInput
 
 
 signal seedChanged(newSeed: String)
 signal gridSizeChanged(newSize: int)
 signal numberOfGamesChanged(newNumber: int)
+signal showGhostChanged(newState: bool)
 
 signal saveImageRequested()
 signal nextRoundRequested()
@@ -32,6 +35,9 @@ func _on_number_of_games_input_value_changed(value: float) -> void:
 	var newValue = int(value)
 	numberOfGamesChanged.emit(newValue)
 
+
+func _on_show_ghost_input_toggled(toggled_on: bool) -> void:
+	showGhostChanged.emit(toggled_on)
 
 func _on_next_round_button_pressed() -> void:
 	nextRoundRequested.emit()
@@ -56,3 +62,7 @@ func updateGridSize(newValue: int) -> void:
 
 func updateNumberOfGames(newValue: int) -> void:
 	numberOfGamesInput.value = newValue
+
+
+func updateShowGhost(newValue: bool) -> void:
+	showGhostInput.button_pressed = newValue
