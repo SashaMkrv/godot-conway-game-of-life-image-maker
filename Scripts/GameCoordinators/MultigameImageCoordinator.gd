@@ -196,8 +196,39 @@ func copyCurrentImageToClipboard() -> void:
 	var saver = $ImageSaver
 	if saver == null:
 		print_debug("no method for saving images")
+		
+	var image = _currentImage
+	if showGhost:
+		image = _blendImages(_currentImage, _previousImage)
 	
-	saver.trySaveImage(_currentImage)
+	saver.trySaveImage(image)
+
+
+func _blendImages(image1: Image, image2: Image) -> Image:
+	# TODO move this out to another script.
+	var copy: Image = image1.duplicate(true) # TODO actually check if you need to copy the subresources
+	if image2 == null:
+		return copy
+	
+	copy.convert(Image.FORMAT_RGBA8)
+	
+	var transparentCopy: Image = image2.duplicate(true)
+	transparentCopy.convert(Image.FORMAT_RGBA8)
+	
+	var size = transparentCopy.get_size()
+	# HACK this CANNOT be the way to handle this.... Hack isn't even the right word, this is just sad.
+	var color: Color
+	for x in size.x:
+		for y in size.y:
+			color = transparentCopy.get_pixel(x, y)
+			color.a = 0.3
+			transparentCopy.set_pixel(x, y, color)
+	
+	
+	copy.blend_rect(transparentCopy, Rect2i(0, 0, size.x, size.y), Vector2i(0, 0))
+	copy.convert(Image.FORMAT_RGB8)
+	
+	return copy
 
 
 func _on_palette_request_detector_palette_requested() -> void:
