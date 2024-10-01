@@ -5,7 +5,7 @@ class_name LayeredOpaqueMapsImageConstructor
 ## Create image from bitmaps. Uses first palette color for dead cells, and one other colour per bitmap for live cells.
 func createImage(maps: Array[BitMap]) -> Image:
 	var size := maps[0].get_size()
-	var image := Image.create(size.x, size.y, false, Image.FORMAT_RGB8)
+	var image := Image.create_empty(size.x, size.y, false, Image.FORMAT_RGB8)
 	image.fill(Color.TRANSPARENT)
 	
 	#var opacity: float = 1.0/maps.size()
