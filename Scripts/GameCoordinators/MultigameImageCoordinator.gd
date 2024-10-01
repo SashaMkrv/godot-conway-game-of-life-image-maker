@@ -90,6 +90,8 @@ func _ready() -> void:
 	ghostNode.texture = _ghostTexture
 	imageConstuctor.palette = colorPalette
 	# NOTE after this initial update, the source of truth for fields comes from the UI node.
+	# so if you modify the remote root node's exported variables during runtime, the image *will* be affected,
+	# but the UI fields will not.
 	updateUiFields()
 	setStretchMode()
 	
