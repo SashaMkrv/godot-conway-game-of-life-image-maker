@@ -180,12 +180,8 @@ func _on_step_controller_request_next_step() -> void:
 	requestNextStep()
 
 
-func _on_copy_detector_request_image_to_clipboard() -> void:
-	copyCurrentImageToClipboard()
-
-
 ## Specifically does not copy image to clipboard. Chucks it into a pictures folder instead.
-func copyCurrentImageToClipboard() -> void:
+func saveImage() -> void:
 	if _currentImage == null:
 		print_debug("no image logged yet")
 	
@@ -249,7 +245,7 @@ func _on_settings_ui_new_palette_requested() -> void:
 
 
 func _on_settings_ui_save_image_requested() -> void:
-	copyCurrentImageToClipboard()
+	saveImage()
 
 
 func _on_settings_ui_grid_size_changed(newSize: int) -> void:

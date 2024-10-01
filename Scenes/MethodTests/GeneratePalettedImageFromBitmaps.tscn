@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://chyrbnoqdu1vu"]
+[gd_scene load_steps=12 format=3 uid="uid://chyrbnoqdu1vu"]
 
 [ext_resource type="Script" path="res://Scripts/GameCoordinators/MultigameImageCoordinator.gd" id="1_0ppc7"]
 [ext_resource type="Script" path="res://Scripts/BitmapToImage/LayeredOpaqueMapsImageConstructor.gd" id="2_j0kto"]
 [ext_resource type="Script" path="res://Scripts/StepControl.gd" id="3_ii0rx"]
-[ext_resource type="Script" path="res://Scripts/InputListeners/CopyDetector.gd" id="4_oi4sq"]
 [ext_resource type="Script" path="res://Scripts/ImageSaver.gd" id="5_6dxcy"]
 [ext_resource type="Script" path="res://Scripts/PaletteGenerator.gd" id="6_ilha3"]
 [ext_resource type="Script" path="res://Scripts/InputListeners/PaletteRequestDetector.gd" id="7_s23i7"]
@@ -78,9 +77,6 @@ palette = Array[Color]([Color(0.0042845, 0.217538, 0.387296, 1), Color(0.59867, 
 
 [node name="StepController" type="Node" parent="."]
 script = ExtResource("3_ii0rx")
-
-[node name="CopyRequestDetector" type="Node" parent="."]
-script = ExtResource("4_oi4sq")
 
 [node name="ImageSaver" type="Node" parent="."]
 script = ExtResource("5_6dxcy")
@@ -217,7 +213,6 @@ text = "Save Image
 "
 
 [connection signal="request_next_step" from="StepController" to="." method="_on_step_controller_request_next_step"]
-[connection signal="request_image_to_clipboard" from="CopyRequestDetector" to="." method="_on_copy_detector_request_image_to_clipboard"]
 [connection signal="paletteRequested" from="PaletteRequestDetector" to="." method="_on_palette_request_detector_palette_requested"]
 [connection signal="gridSizeChanged" from="SettingsUI" to="." method="_on_settings_ui_grid_size_changed"]
 [connection signal="newPaletteRequested" from="SettingsUI" to="." method="_on_settings_ui_new_palette_requested"]
