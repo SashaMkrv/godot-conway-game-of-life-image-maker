@@ -89,6 +89,8 @@ script = ExtResource("5_6dxcy")
 script = ExtResource("6_ilha3")
 
 [node name="PaletteRequestDetector" type="Node" parent="."]
+process_mode = 4
+editor_description = "I am fully off right now to not create an awful seed entering expereince."
 script = ExtResource("7_s23i7")
 
 [node name="SettingsUI" type="VBoxContainer" parent="."]

@@ -47,6 +47,11 @@ func _process(delta: float) -> void:
 		request_next_step.emit()
 
 func _input(event: InputEvent) -> void:
+	# turning this off like so, since it's messing with the UI buttons
+	# for obvious reasons
+	pass
+	# TODO change this controller to only do timer events! Pause + unpaused states
+	# Or add a different controller to do the above.
 	if updateType == "Input" and event.is_action_released("ui_accept"):
 		print_debug("emitting next step signal via input")
 		request_next_step.emit()
