@@ -18,6 +18,8 @@ var settingsUi:= $SettingsUI
 @export_range(1, 8)
 var numberOfGames := 1:
 	set(value):
+		if numberOfGames == value:
+			return
 		numberOfGames = value
 		updatedNumberOfGames()
 
@@ -25,6 +27,8 @@ var numberOfGames := 1:
 @export_range(1, 1000)
 var gridSize := 25:
 	set(value):
+		if gridSize == value:
+			return
 		gridSize = value
 		updatedGridSize()
 
@@ -32,6 +36,8 @@ var gridSize := 25:
 @export
 var gameSeed := "seed":
 	set(value):
+		if gameSeed == value:
+			return
 		gameSeed = value
 		updatedSeed()
 

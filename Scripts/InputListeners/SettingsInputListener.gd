@@ -2,6 +2,7 @@
 extends Node
 
 
+
 @onready
 var seedInput: LineEdit = %SeedInput
 @onready
@@ -10,6 +11,10 @@ var gridSizeInput: SpinBox = %GridSizeInput
 var numberOfGamesInput: SpinBox = %NumberOfGamesInput
 @onready
 var showGhostInput: CheckBox = %ShowGhostInput
+@onready
+var logTextEdit: TextEdit = %LogTextEdit
+@onready
+var logContainer: Control = $LogMargin
 
 
 signal seedChanged(newSeed: String)
@@ -22,7 +27,24 @@ signal nextRoundRequested()
 signal newPaletteRequested()
 
 
+var _logging:= false
+
+func _ready() -> void:
+	if not OS.has_feature("debug"):
+		logContainer.visible = false
+		_logging = false
+	else:
+		_logging = true
+
 func _on_seed_input_text_changed(new_text: String) -> void:
+	seedChanged.emit(new_text)
+
+
+func _on_seed_input_focus_exited() -> void:
+	if _logging:
+		addToLogs("on text focus exited event success.")
+	# HACK terrible things happening here on account of the thrills of web mobile
+	var new_text = seedInput.text
 	seedChanged.emit(new_text)
 
 
@@ -66,3 +88,7 @@ func updateNumberOfGames(newValue: int) -> void:
 
 func updateShowGhost(newValue: bool) -> void:
 	showGhostInput.button_pressed = newValue
+
+
+func addToLogs(text: String) -> void:
+	logTextEdit.insert_text(text + "\n", 0, 0)
