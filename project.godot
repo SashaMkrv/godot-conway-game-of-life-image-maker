@@ -13,6 +13,9 @@ config_version=5
 config/name="Many Games of Life"
 run/main_scene="res://Scenes/MethodTests/GeneratePalettedImageFromBitmaps.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
+boot_splash/bg_color=Color(0.0197586, 0.0197111, 0.0564497, 1)
+boot_splash/image="res://Resources/icon-bigger.png"
+boot_splash/fullsize=false
 config/icon="res://Resources/icon.png"
 
 [display]
