@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Many Games of Life"
+config/name="Buncha Games of Life"
 run/main_scene="res://Scenes/MethodTests/GeneratePalettedImageFromBitmaps.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 boot_splash/bg_color=Color(0.0197586, 0.0197111, 0.0564497, 1)
