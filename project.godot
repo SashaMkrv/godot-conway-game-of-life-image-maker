@@ -20,8 +20,13 @@ config/icon="res://Resources/icon.png"
 
 [display]
 
+window/size/viewport_width=648
+window/size/viewport_height=900
 window/size/always_on_top=true
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 window/stretch/scale=2.0
+window/handheld/orientation=1
 
 [dotnet]
 
@@ -30,3 +35,4 @@ project/assembly_name="godot-4.3-conway-game-of-life"
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
