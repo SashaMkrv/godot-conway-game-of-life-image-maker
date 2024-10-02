@@ -7,20 +7,19 @@ var updateType: String = "Input":
 	set(value):
 		typeUpdated(updateType, value)
 		updateType = value
-## could make this a proper enum, or do anything to ensure correctness
-## but I won't
-## or maybe I will later, but not right now!
+# TODO could make this a proper enum, or do anything at all to ensure correctness
 
-#I should pop these out into strategy nodes. Which might result in a class hierarchy which would make me sad
+# I should pop these out into strategy nodes. Which might result in a class hierarchy which would make me sad
 # or it could have no type safety whatsoever, which would also make me sad.
 # such is life. I guess I can treat flat-ish hierarchies as interfaces as long as I use a parent node to string them together?
 # a bunch of extra boilerplate, but it's not like gdscript is particularly verbose.
 
 var _timer: Timer
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	createTimer()
+
 
 func createTimer() -> void:
 	_timer = Timer.new()
@@ -29,6 +28,7 @@ func createTimer() -> void:
 	add_child(_timer)
 	if updateType == "Timed":
 		_timer.start()
+
 
 func typeUpdated(oldType: String, type: String) -> void:
 	if oldType == type:
@@ -40,7 +40,7 @@ func typeUpdated(oldType: String, type: String) -> void:
 	if type == "Timed":
 		_timer.start()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta: float) -> void:
 	if updateType == "Process":
 		print_debug("emitting next step signal via process")

@@ -1,8 +1,8 @@
 @tool
 extends Node
 
-#@onready
-#var gamesNode:= $Games
+## Our god script.
+
 @onready
 var imageConstuctor:= $ImageConstructor
 @onready

@@ -38,5 +38,5 @@ func _process(_delta: float) -> void:
 func showImage(bitmap: BitMap) -> void:
 	var image = pendingBitMap.convert_to_image()
 	_imageTexture.set_image(image)
-	## need to do this after setting the image
+	# need to do this after setting the image
 	_imageTexture.set_size_override(Vector2i(500, 500))

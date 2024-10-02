@@ -8,7 +8,6 @@ func createImage(maps: Array[BitMap]) -> Image:
 	var image := Image.create_empty(size.x, size.y, false, Image.FORMAT_RGB8)
 	image.fill(Color.TRANSPARENT)
 	
-	#var opacity: float = 1.0/maps.size()
 	var opacity:= 0.50
 	var newColor := Color.TRANSPARENT
 	var currentColor := Color.TRANSPARENT
@@ -29,8 +28,6 @@ func createImage(maps: Array[BitMap]) -> Image:
 					currentColor = currentColor.blend(newColor)
 				else:
 					pass
-					#newColor = palette[0]
-				
 			
 			image.set_pixel(x, y, currentColor)
 	

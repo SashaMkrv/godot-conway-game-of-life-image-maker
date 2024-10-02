@@ -18,5 +18,4 @@ func trySaveImage(image: Image) -> void:
 			#var imagePath = OS.get_system_dir(OS.SYSTEM_DIR_PICTURES) \
 			#+ "/" + "game_of_life_" + time + ".png"
 			imageCopy.save_png(imagePath)
-		
-	
+	print("I didn't error out, so I probably succeeded!")

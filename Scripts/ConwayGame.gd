@@ -14,9 +14,6 @@ const SURROUNDINGS_MASK = [
 	]
 
 var gameBoard: BitMap
-## BitMaps have a convert_to_image() function
-## white pixels for true, black for false.
-## has resize function as well
 
 func requestNextStep() -> void:
 	gameBoard = nextRound(gameBoard, SURROUNDINGS_MASK)
@@ -54,7 +51,6 @@ func populateGameBoard(rng: RandomNumberGenerator, map: BitMap) -> BitMap:
 func nextRound(map: BitMap, mask: Array) -> BitMap:
 	var newMap := map.duplicate()
 	var size := map.get_size()
-	## man I want linq functions. but who knows how things will change.
 	var currentDensity := 0
 	var currentCellState := false
 	for x in size.x:
@@ -70,6 +66,7 @@ func nextRound(map: BitMap, mask: Array) -> BitMap:
 	# so we can have this updated by button press instead.
 	# pity you can't extrapolate previous steps from the current
 	# data without keeping an infinite game board.
+	# no. even then you can't. the cursed +c of lonely dying cells.
 
 func sumLiveCellsInMask(map: BitMap, size: Vector2, mask: Array, x: int, y: int) -> int:
 	var sum := 0
@@ -80,9 +77,9 @@ func sumLiveCellsInMask(map: BitMap, size: Vector2, mask: Array, x: int, y: int)
 			sum += 1
 	return sum
 
+## this determines how the game treats out of bounds cells. Are they falsey? truthy? do they wrap? how do they wrap?
 func getCurrentCellState(map: BitMap, size: Vector2, _x: int, _y: int) -> bool:
 	var x:= posmod(_x, size.x)
 	var y:= posmod(_y, size.y)
 	
 	return map.get_bit(x, y)
-	## this determines how the game views out of bounds cells. Are they falsey? truthy? do they wrap? how do they wrap?
