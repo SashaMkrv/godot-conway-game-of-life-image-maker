@@ -33,9 +33,8 @@ signal newPaletteRequested()
 var _logging:= false
 
 func _ready() -> void:
-	if not OS.has_feature("mobile"):
-		if firstFocusElement != null:
-			firstFocusElement.grab_focus()
+	if firstFocusElement != null:
+		firstFocusElement.grab_focus()
 	if not OS.has_feature("debug"):
 		logContainer.visible = false
 		_logging = false
