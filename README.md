@@ -38,7 +38,7 @@ Palette size is based on the number of games in play, plus one more colour for t
 ![](Docs/Images/conwayneonblue-wide.png)
 
 ### Game Generation
-Each game receives a modified version of the current seed, which is used to decide whether the initial state of any cell is live or dead. RNG seeds for each game are based on its position in the list of all current games and stay consistent between regenerations using the same seed and grid size.
+Each game receives a its own modified version of the current seed, which is used to decide whether the initial state of any cell is live or dead. RNG seeds for each game are based on its position in the list of all current games and stay consistent between regenerations using the same seed and grid size.
 
 ![](Docs/Images/conwayyellow-wide.png)
 
