@@ -16,6 +16,9 @@ var logTextEdit: TextEdit = %LogTextEdit
 @onready
 var logContainer: Control = $LogMargin
 
+@export
+var firstFocusElement: Control
+
 
 signal seedChanged(newSeed: String)
 signal gridSizeChanged(newSize: int)
@@ -30,6 +33,9 @@ signal newPaletteRequested()
 var _logging:= false
 
 func _ready() -> void:
+	if not OS.has_feature("mobile"):
+		if firstFocusElement != null:
+			firstFocusElement.grab_focus()
 	if not OS.has_feature("debug"):
 		logContainer.visible = false
 		_logging = false
