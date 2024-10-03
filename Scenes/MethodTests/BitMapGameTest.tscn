@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://Scripts/ShowMapImage.gd" id="1_v4kdx"]
 [ext_resource type="Script" path="res://Scripts/StepControl.gd" id="3_0chq1"]
 
-[sub_resource type="ImageTexture" id="ImageTexture_s5y5h"]
+[sub_resource type="ImageTexture" id="ImageTexture_305c7"]
 
-[sub_resource type="ImageTexture" id="ImageTexture_tv0jb"]
+[sub_resource type="ImageTexture" id="ImageTexture_lmbuy"]
 
-[sub_resource type="ImageTexture" id="ImageTexture_tm46u"]
+[sub_resource type="ImageTexture" id="ImageTexture_t488x"]
 
 [node name="Game" type="Control"]
 texture_filter = 1
@@ -473,7 +473,7 @@ seed = "Chef Boyardee"
 
 [node name="TextureRect" type="TextureRect" parent="GameSpace1"]
 layout_mode = 2
-texture = SubResource("ImageTexture_s5y5h")
+texture = SubResource("ImageTexture_305c7")
 stretch_mode = 1
 
 [node name="StepControl" type="Node" parent="GameSpace1"]
@@ -496,7 +496,7 @@ seed = "Boysonberry"
 
 [node name="TextureRect" type="TextureRect" parent="GameSpace2"]
 layout_mode = 2
-texture = SubResource("ImageTexture_tv0jb")
+texture = SubResource("ImageTexture_lmbuy")
 stretch_mode = 1
 
 [node name="StepControl" type="Node" parent="GameSpace2"]
@@ -519,7 +519,7 @@ seed = "Trails"
 
 [node name="TextureRect" type="TextureRect" parent="GameSpace3"]
 layout_mode = 2
-texture = SubResource("ImageTexture_tm46u")
+texture = SubResource("ImageTexture_t488x")
 stretch_mode = 1
 
 [node name="StepControl" type="Node" parent="GameSpace3"]
