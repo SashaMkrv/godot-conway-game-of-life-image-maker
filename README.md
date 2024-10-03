@@ -34,7 +34,7 @@ Most parameter changes will reset and regenerate the games.
 Palette size is based on the number of games in play, plus one more colour for the background. Colours in palettes are created with `Color(rng.randf(), rng.randf(), rng.randf())`, so RNG state is based on the number of colours generated, and not the number of palettes generated.
 
 ### Game Generation
-Each game receives a modified version of the current seed based, which is used to decide whether the initial state of any cell is live or dead. RNG seeds for each game are based on its position in the list of all current games and stay consistent between regenerations using the same seed and grid size.
+Each game receives a modified version of the current seed, which is used to decide whether the initial state of any cell is live or dead. RNG seeds for each game are based on its position in the list of all current games and stay consistent between regenerations using the same seed and grid size.
 
 ### Calculating Rounds
 Standard Game of Life rules apply, but coordinates wrap when out of bounds. i.e. index `maxIndex + 1` is treated as index `0`, and index `-1` is treated as index `maxIndex`.
